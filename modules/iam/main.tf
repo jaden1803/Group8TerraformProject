@@ -1,4 +1,4 @@
-terraform {
+/*terraform {
   required_version = ">= 1.0.0"
 
   required_providers {
@@ -49,3 +49,4 @@ resource "aws_iam_instance_profile" "web_profile" {
   name = "Group8-${var.env_name}-WebProfile"
   role = aws_iam_role.web_role.name
 }
+*/

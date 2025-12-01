@@ -15,9 +15,6 @@ resource "aws_launch_template" "this" {
   instance_type = var.instance_type
   key_name      = var.key_name
 
-  iam_instance_profile {
-    name = var.instance_profile_name
-  }
 
   network_interfaces {
     associate_public_ip_address = false
