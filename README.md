@@ -138,3 +138,38 @@ We maintain **three** isolated Terraform environments under the `env/` folder.
 │
 ├── provider.tf
 └── README.md
+## Environment Deployment Guide
+
+This repository deploys a highly available two-tier web application on AWS using Terraform.
+
+### Environments
+
+We manage three separate environments:
+
+- **dev** – used for initial changes and testing.
+- **staging** – used to test a near-production copy of the stack.
+- **prod** – final production environment.
+
+Each environment has its own Terraform state stored in S3.
+
+| Environment | State bucket name                         |
+|------------|-------------------------------------------|
+| dev        | `group8-dev-tfstate-bucket`               |
+| staging    | `group8-staging-tfstate-bucket`           |
+| prod       | `group8-prod-tfstate-bucket` *(planned)*  |
+
+> Note: In our lab account we do **not** have permission to create IAM roles.  
+> Because of this, EC2 instances run **without** an instance profile and cannot read from S3 directly.
+> Static content is served from the EC2 web server filesystem instead of using an S3 origin.
+
+### How to deploy an environment
+
+From the project root:
+
+```bash
+cd env/<env-name>   # dev, staging, or prod
+
+terraform init
+terraform validate
+terraform plan -out <env-name>.plan
+terraform apply <env-name>.plan
