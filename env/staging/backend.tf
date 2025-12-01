@@ -1,4 +1,4 @@
-terraform {
+ terraform {
   backend "s3" {
     bucket       = "group8-staging-tfstate-bucket"
     key          = "staging/terraform.tfstate"

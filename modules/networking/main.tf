@@ -56,7 +56,6 @@ resource "aws_subnet" "private" {
 }
 
 resource "aws_eip" "nat" {
-  vpc = true
 
   tags = {
     Name = "Group8-${var.env_name}-NAT-EIP"

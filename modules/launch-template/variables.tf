@@ -22,8 +22,3 @@ variable "bucket_name" {
   description = "S3 bucket where index.html and images are stored"
   type        = string
 }
-
-variable "instance_profile_name" {
-  description = "IAM instance profile name for EC2"
-  type        = string
-}

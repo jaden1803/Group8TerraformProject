@@ -29,12 +29,12 @@ module "security" {
   env_name = local.env_name
   vpc_id   = module.networking.vpc_id
 }
-
+/*
 module "iam" {
   source   = "../../modules/iam"
   env_name = local.env_name
 }
-
+*/
 module "alb" {
   source = "../../modules/alb"
 
@@ -53,7 +53,7 @@ module "launch_template" {
   web_sg_id            = module.security.web_sg_id
   key_name             = var.key_name
   bucket_name          = var.web_bucket_name
-  instance_profile_name = module.iam.instance_profile_name
+  #instance_profile_name = module.iam.instance_profile_name
 }
 
 module "asg" {
